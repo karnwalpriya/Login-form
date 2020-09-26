@@ -112,3 +112,30 @@ input::placeholder{
   color: #999999;
   font-weight: lighter;
 }
+
+.header{
+  font-size: 24px;
+  font-family: sans-serif;
+}
+
+.content{
+  display: flex;
+  flex-direction: column;
+}
+
+.form{
+  margin-top: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.form-group{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: fit-content;
+}
+
+.signin {
+  margin-top: 3em;
+}

@@ -1,70 +1,62 @@
-import React, { Component } from "react";
+import React from "react";
 import "./App.css";
+import { Login } from "./login page/index";
 
-class App extends Component{
-  render() {
-    return (
-      <div className="wrapper">
-        <div className="form-wrapper">
-          <h1>Create Account</h1>
-          <form onSubmit={this.handleSubmit} noValidate>
-            <div className="firstName">
-              <label htmlFor="firstName">First Name</label>
-              <input
-                className=""
-                placeholder="First Name"
-                type="text"
-                name="firstName"
-                noValidate
-                onChange={this.handleChange}
-              />
-              
-            </div>
-            <div className="lastName">
-              <label htmlFor="lastName">Last Name</label>
-              <input
-              className=""
-              placeholder="Last Name"
-              type="text"
-              name="lastName"
-              noValidate
-              onChange={this.handleChange}
-            />
-            
+class App extends React.Component{
+  constructor(props){
+    super(props);
+    this.state ={
+      isLogginActive: true
+    };
+  }
+
+  componentDidMount(){
+    this.rightSide.classList.add("right");
+  }
+
+  changeState(){
+    const{ isLogginActive } = this.state;
+    if( isLogginActive ){
+      this.rightSide.cxlassList.remove("right");
+      this.rightSide.classList.add("left");
+    } else{
+      this.rightSide.classList.remove("left");
+      this.rightSide.classList.add("right");
+    }
+    this.setState(prevState => ({ isLogginActive: !prevState.isLogginActive}));
+  }
+
+  render(){
+    const{ isLogginActive } = this.state;
+    const current = isLogginActive ? "Register" :"Login";
+    const currentActive = isLogginActive ? "login" : "register";
+    return(
+      <div className="App">
+        <div className="login">
+          <div className="container" ref={ref => (this.container = ref)}>
+            {isLogginActive &&(
+              <Login containerRef={ref => (this.current = ref)} />
+            )}
+            {!isLogginActive && (
+              <register containerRef={ref => (this.current = ref)} />
+            )}
           </div>
-          <div className="email">
-            <label htmlFor="email">Email</label>
-            <input
-              className=""
-              placeholder="Email"
-              type="email"
-              name="email"
-              noValidate
-              onChange={this.handleChange}
-            />
-            
-          </div>
-          <div className="password">
-            <label htmlFor="password">Password</label>
-            <input
-              className=""
-              placeholder="Password"
-              type="password"
-              name="password"
-              noValidate
-              onChange={this.handleChange}
-            />
-            
-          </div>
-          <div className="createAccount">
-            <button type="submit">Create Account</button>
-            <small>Already Have an Account?</small>
-          </div>
-        </form>
+          <RightSide current={current} currentActive={currentActive} containerRef={ref => (this.rightSide = ref)} onclick={this.changeState.bind(this)} />
+        </div>
+      </div>
+    );
+  }
+}
+const RightSide = props =>{
+  return(
+    <div className="right-side" ref={props.containerRef} onClick={props.onClick}>
+      <div className="inner-container">
+        <div className="text">
+          {props.current}
+        </div>
       </div>
     </div>
   );
-}
-}
+};
 
 export default App;
