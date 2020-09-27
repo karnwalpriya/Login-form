@@ -1,62 +1,30 @@
-import React from "react";
-import "./App.css";
-import { Login } from "./login page/index";
+import React ,{ Component } from 'react';
+import './App.css';
+import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom';
+import Login from './components/login';
+import Register from './components/register';
 
-class App extends React.Component{
-  constructor(props){
-    super(props);
-    this.state ={
-      isLogginActive: true
-    };
-  }
-
-  componentDidMount(){
-    this.rightSide.classList.add("right");
-  }
-
-  changeState(){
-    const{ isLogginActive } = this.state;
-    if( isLogginActive ){
-      this.rightSide.cxlassList.remove("right");
-      this.rightSide.classList.add("left");
-    } else{
-      this.rightSide.classList.remove("left");
-      this.rightSide.classList.add("right");
-    }
-    this.setState(prevState => ({ isLogginActive: !prevState.isLogginActive}));
-  }
-
+class App extends Component{
   render(){
-    const{ isLogginActive } = this.state;
-    const current = isLogginActive ? "Register" :"Login";
-    const currentActive = isLogginActive ? "login" : "register";
     return(
-      <div className="App">
-        <div className="login">
-          <div className="container" ref={ref => (this.container = ref)}>
-            {isLogginActive &&(
-              <Login containerRef={ref => (this.current = ref)} />
-            )}
-            {!isLogginActive && (
-              <register containerRef={ref => (this.current = ref)} />
-            )}
-          </div>
-          <RightSide current={current} currentActive={currentActive} containerRef={ref => (this.rightSide = ref)} onclick={this.changeState.bind(this)} />
+      <Router>
+      <h1> HELLO </h1>
+        <div className="App">
+          <ul className="App-header">
+            <li>
+              <link to="/">Login</link>
+            </li>
+            <li>
+              <link to="/register">Register</link>
+            </li>
+          </ul>
+          <switch>
+            <Route exact path='/' component={Login}></Route>
+            <Route exact path='/register' component={Register}></Route>
+          </switch>
         </div>
-      </div>
+      </Router>
     );
   }
 }
-const RightSide = props =>{
-  return(
-    <div className="right-side" ref={props.containerRef} onClick={props.onClick}>
-      <div className="inner-container">
-        <div className="text">
-          {props.current}
-        </div>
-      </div>
-    </div>
-  );
-};
-
 export default App;
