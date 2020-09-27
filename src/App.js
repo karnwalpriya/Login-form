@@ -1,8 +1,8 @@
 import React ,{ Component } from 'react';
 import './App.css';
-import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom';
-import Login from './components/login';
-import Register from './components/register';
+import {BrowserRouter as Router, Route,Link} from 'react-router-dom';
+import login from './components/login';
+import register from './components/register';
 
 class App extends Component{
   render(){
@@ -12,15 +12,15 @@ class App extends Component{
         <div className="App">
           <ul className="App-header">
             <li>
-              <link to="/">Login</link>
+              <link to="/login">Login</link>
             </li>
             <li>
               <link to="/register">Register</link>
             </li>
           </ul>
           <switch>
-            <Route exact path='/' component={Login}></Route>
-            <Route exact path='/register' component={Register}></Route>
+            <Route exact path='/login' component={login}></Route>
+            <Route exact path='/register' component={register}></Route>
           </switch>
         </div>
       </Router>

@@ -1,7 +1,8 @@
 import React, {Component} from "react";
-import {Link,Route,Router} from "react-router-dom";
+import "../App.css";
+import {Link,Router} from "react-router-dom";
 
-class Register extends Component{
+class register extends Component{
     render(){
         return(
             <div className="wrapper">
@@ -34,4 +35,4 @@ class Register extends Component{
     }
 }
 
-export default Register;
+export default register;
