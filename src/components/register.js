@@ -2,8 +2,7 @@ import React, {Component} from "react";
 import "../App.css";
 import {Link,Router} from "react-router-dom";
 
-class register extends Component{
-    render(){
+function Register(){
         return(
             <div className="wrapper">
                 <div className="form-wrapper">
@@ -35,4 +34,4 @@ class register extends Component{
     }
 }
 
-export default register;
+export default Register;

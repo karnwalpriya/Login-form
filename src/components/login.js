@@ -2,8 +2,7 @@ import React, {Component} from "react";
 import "../App.css";
 import {Link,Router} from "react-router-dom";
 
-class login extends Component{
-  render(){
+function Login(){
     return(
       <div className="wrapper">
         <div className="form-wrapper">
@@ -26,7 +25,6 @@ class login extends Component{
         </div>
       </div>
     );
-  }
 }
 
-export default login;
+export default Login;

@@ -98,3 +98,20 @@ input{
   background-color: #ffffff;
   border: 2px solid #a9a9a9;
 }
+
+nav{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 10vh;
+  background-color: black;
+  color: #ffffff;
+}
+
+.Nav-Links{
+  width: 40%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+}
